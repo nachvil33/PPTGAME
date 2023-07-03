@@ -1,6 +1,6 @@
 // Función para obtener la elección aleatoria de la computadora
 function getComputerChoice() {
-  const choices = ['rock', 'paper', 'scissors'];
+  const choices = ['PIEDRA', 'PAPEL', 'TIJERAS'];
   const randomIndex = Math.floor(Math.random() * choices.length);
   return choices[randomIndex];
 }
@@ -8,19 +8,19 @@ function getComputerChoice() {
 // Función para jugar una sola ronda
 function playRound(playerSelection, computerSelection) {
   // Convertir la selección del jugador a minúsculas para hacerla insensible a mayúsculas y minúsculas
-  playerSelection = playerSelection.toLowerCase();
+  playerSelection = playerSelection.toUpperCase();
 
   // Comprobar las diferentes combinaciones de jugadas para determinar el ganador
   if (playerSelection === computerSelection) {
-    return "It's a tie!";
+    return "Empate!";
   } else if (
-    (playerSelection === 'rock' && computerSelection === 'scissors') ||
-    (playerSelection === 'paper' && computerSelection === 'rock') ||
-    (playerSelection === 'scissors' && computerSelection === 'paper')
+    (playerSelection === 'PIEDRA' && computerSelection === 'TIJERAS') ||
+    (playerSelection === 'PAPEL' && computerSelection === 'PIEDRA') ||
+    (playerSelection === 'TIJERAS' && computerSelection === 'PAPEL')
   ) {
-    return `You win! ${playerSelection} beats ${computerSelection}`;
+    return `¡Ganaste! ${playerSelection} vence a ${computerSelection}`;
   } else {
-    return `You lose! ${computerSelection} beats ${playerSelection}`;
+    return `¡Perdiste! ${computerSelection} vence a ${playerSelection}`;
   }
 }
 
@@ -38,13 +38,13 @@ function game() {
       const result = playRound(playerSelection, computerSelection);
       document.getElementById('result').textContent = result;
 
-      if (result.includes('win')) {
+      if (result.includes('Ganaste!')) {
         playerScore++;
-      } else if (result.includes('lose')) {
+      } else if (result.includes('Perdiste!')) {
         computerScore++;
       }
 
-      document.getElementById('score').textContent = `Player Score: ${playerScore} | Computer Score: ${computerScore}`;
+      document.getElementById('score').textContent = `Puntos del jugador: ${playerScore} | Puntos de la computadora: ${computerScore}`;
 
       if (playerScore === 5 || computerScore === 5) {
         options.forEach(option => {
@@ -52,9 +52,9 @@ function game() {
         });
 
         if (playerScore > computerScore) {
-          document.getElementById('result').textContent = "Congratulations! You win the game!";
+          document.getElementById('result').textContent = "¡Felicidades! ¡Ganaste el juego!";
         } else {
-          document.getElementById('result').textContent = "Sorry, you lose the game!";
+          document.getElementById('result').textContent = "¡Lo siento! ¡Perdiste el juego!";
         }
       }
     });
