@@ -1,30 +1,30 @@
-// Función para obtener la elección aleatoria de la computadora
+// Function to get the computer's random choice
 function getComputerChoice() {
-  const choices = ['PIEDRA', 'PAPEL', 'TIJERAS'];
+  const choices = ['ROCK', 'PAPER', 'SCISSORS'];
   const randomIndex = Math.floor(Math.random() * choices.length);
   return choices[randomIndex];
 }
 
-// Función para jugar una sola ronda
+// Function to play a single round
 function playRound(playerSelection, computerSelection) {
-  // Convertir la selección del jugador a minúsculas para hacerla insensible a mayúsculas y minúsculas
+  // Convert the player's selection to uppercase to make it case-insensitive
   playerSelection = playerSelection.toUpperCase();
 
-  // Comprobar las diferentes combinaciones de jugadas para determinar el ganador
+  // Check the different play combinations to determine the winner
   if (playerSelection === computerSelection) {
-    return "Empate!";
+    return "It's a tie!";
   } else if (
-    (playerSelection === 'PIEDRA' && computerSelection === 'TIJERAS') ||
-    (playerSelection === 'PAPEL' && computerSelection === 'PIEDRA') ||
-    (playerSelection === 'TIJERAS' && computerSelection === 'PAPEL')
+    (playerSelection === 'ROCK' && computerSelection === 'SCISSORS') ||
+    (playerSelection === 'PAPER' && computerSelection === 'ROCK') ||
+    (playerSelection === 'SCISSORS' && computerSelection === 'PAPER')
   ) {
-    return `¡Ganaste! ${playerSelection} vence a ${computerSelection}`;
+    return `You win! ${playerSelection} beats ${computerSelection}`;
   } else {
-    return `¡Perdiste! ${computerSelection} vence a ${playerSelection}`;
+    return `You lose! ${computerSelection} beats ${playerSelection}`;
   }
 }
 
-// Función para jugar un juego de 5 rondas
+// Function to play a 5-round game
 function game() {
   let playerScore = 0;
   let computerScore = 0;
@@ -38,13 +38,13 @@ function game() {
       const result = playRound(playerSelection, computerSelection);
       document.getElementById('result').textContent = result;
 
-      if (result.includes('Ganaste!')) {
+      if (result.includes('win!')) {
         playerScore++;
-      } else if (result.includes('Perdiste!')) {
+      } else if (result.includes('lose!')) {
         computerScore++;
       }
 
-      document.getElementById('score').textContent = `Puntos del jugador: ${playerScore} | Puntos de la computadora: ${computerScore}`;
+      document.getElementById('score').textContent = `Player Score: ${playerScore} | Computer Score: ${computerScore}`;
 
       if (playerScore === 5 || computerScore === 5) {
         options.forEach(option => {
@@ -52,14 +52,14 @@ function game() {
         });
 
         if (playerScore > computerScore) {
-          document.getElementById('result').textContent = "¡Felicidades! ¡Ganaste el juego!";
+          document.getElementById('result').textContent = "Congratulations! You won the game!";
         } else {
-          document.getElementById('result').textContent = "¡Lo siento! ¡Perdiste el juego!";
+          document.getElementById('result').textContent = "Sorry! You lost the game!";
         }
       }
     });
   });
 }
 
-// Iniciar el juego
+// Start the game
 game();
