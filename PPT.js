@@ -6,7 +6,7 @@ const backgroundImages = [
   'callejon3.jpg',
   'luna.jpg',
   'luna1.jpg',
-  'montana.jpg',
+  'montangit adda.jpg',
 ];
 
 let currentImageIndex = 0; // Index of the currently displayed background image
