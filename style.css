@@ -3,7 +3,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  color: white;
+  color: black;
   font-family: Arial, sans-serif;
   margin: 0;
 }
@@ -23,14 +23,12 @@ body {
 .options {
   display: flex;
   justify-content: center;
-  align-items: center;
   margin-top: 50px;
 }
 
 .option {
   margin: 0 20px;
   cursor: pointer;
-  text-align: center;
 }
 
 .option img {
@@ -38,13 +36,8 @@ body {
   height: 150px;
 }
 
-.option p {
-  margin-top: 10px;
-  font-size: 24px;
-  color: black; /* Cambio de color de fuente */
-  background-color: white; /* Agregado de fondo */
-  padding: 5px 10px; /* Espaciado alrededor del texto */
-  border-radius: 5px; /* Bordes redondeados */
+.option:hover {
+  opacity: 0.8;
 }
 
 #result {
@@ -74,18 +67,4 @@ body {
 
 .locked {
   background-color: darkred;
-}
-
-#board {
-  margin-top: 20px;
-  font-size: 18px;
-  text-align: center;
-}
-
-#board p {
-  margin-bottom: 5px;
-}
-
-#board span {
-  font-weight: bold;
 }
